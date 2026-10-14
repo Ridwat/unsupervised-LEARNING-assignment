@@ -1,101 +1,47 @@
-# 🧠 Unsupervised Learning on Wine Dataset (Clustering + Dimensionality Reduction)
+# Wine Clustering & Dimensionality Reduction
 
-This project demonstrates the application of **unsupervised learning techniques** — specifically **K-Means** and **Agglomerative (Hierarchical)** clustering — on the classic **Wine Dataset** from `sklearn`.  
-It includes full preprocessing, model training, visualization, evaluation, and a short deployment plan.
+**Adetola Ridwat Odulaja** · Academic machine learning project
 
----
+Compare two clustering methods and make high-dimensional chemical measurements easier to interpret.
 
-## 📘 Project Overview
+**Focus:** Segmentation · Model comparison · Visual interpretation
 
-**Goal:**  
-Use clustering and dimensionality reduction techniques to identify natural groupings in wine chemical data and visualize them in lower dimensions.
+## Question
 
-**Techniques Used:**
-- **Clustering:** K-Means, Agglomerative (Ward linkage)  
-- **Dimensionality Reduction:** PCA (2D), t-SNE (2D)  
-- **Evaluation:** Silhouette Score, Elbow Method  
-- **Visualization:** Scatter plots, dendrograms, PCA/t-SNE projections  
+Can wines be grouped by their chemical attributes without using their class labels?
 
----
+## Dataset & method
 
-## 📊 Dataset
+The scikit-learn Wine dataset contains 178 samples and 13 numeric features. The notebook standardizes features, compares K-Means and agglomerative clustering across candidate cluster counts, and uses silhouette scores to assess separation. PCA and t-SNE provide two-dimensional visualizations.
 
-- **Source:** `sklearn.datasets.load_wine()`  
-- **Samples:** 178  
-- **Features:** 13 numeric chemical attributes of wines  
-- **Target:** Ignored (unsupervised learning focus)  
+## Recorded results
 
-**Preprocessing Steps:**
-- Verified no missing values  
-- Standardized numeric features using `StandardScaler`  
-- No categorical variables (no encoding required)
+| Measure | Saved notebook result |
+|---|---:|
+| Selected clusters, K-Means | 3 |
+| Selected clusters, agglomerative | 3 |
+| K-Means silhouette | 0.2849 |
+| Agglomerative silhouette | 0.2774 |
+| Variance captured by two PCA components | 55.4% |
 
----
+K-Means achieved slightly better silhouette separation in this run. The modest scores also show that cluster boundaries are not sharply separated.
 
-## ⚙️ How to Run in Google Colab
+## Why it matters
 
-1. Open your Google Colab account.  
-2. Upload the notebook file
-3. 3. If prompted for missing libraries, uncomment and run the `pip install` lines in the first code cell.
-4. Run **all cells sequentially** (`Runtime → Run all`).
-5. Review outputs such as:
-- Elbow plot  
-- Silhouette score chart  
-- Dendrogram  
-- PCA and t-SNE visualizations  
-- Final cluster evaluations and interpretation  
+This is a small-scale demonstration of segmentation and model comparison. Similar methods can help explore customer or operational groupings, provided the resulting segments are validated against business needs.
 
----
+## Explore the work
 
-## 📈 Results Summary
+- [Executed notebook](Unsupervised_Clustering_Wine%20%281%29.ipynb)
+- [Submitted report](Unsupervised%20learning.pdf)
+- [Companion notebook version](https://github.com/Ridwat/assignment-9-ML)
 
-- **K-Means:** Best *k* chosen by highest Silhouette score  
-- **Agglomerative Clustering:** Confirmed structure with dendrogram  
-- **PCA:** Reduced dataset to 2D with explained variance ratio ~55%  
-- **t-SNE:** Enhanced local cluster separability  
-- **Interpretation:** Wines grouped based on alcohol, phenols, flavanoids, and color intensity.
+## Run
 
----
+Open the executed notebook in Google Colab and run sequentially. It uses NumPy, Pandas, Matplotlib, scikit-learn, and SciPy. The dataset is loaded using `load_wine()`.
 
-## 🚀 Deployment & Monitoring (Hypothetical Scenario)
+## Limitations
 
-**Scenario:**  
-New daily wine-chemistry data batches are clustered to support quality control and style profiling.
+The dataset is small. Two PCA dimensions omit some information, and visual separation alone does not establish useful segments. API deployment and monitoring are discussed as possible extensions; they are not implemented here. Metrics above come from saved outputs and were not rerun during the documentation review.
 
-**Key Points:**
-- Deploy saved **scaler + clustering model** via FastAPI or Flask endpoint  
-- Batch or real-time inference supported  
-- Monitor **Silhouette score**, **cluster distribution**, and **feature drift**  
-- Automate **monthly retraining** if performance degrades  
-- Use **MLflow/DVC** for versioning and reproducibility  
-- Visual dashboards via **Grafana / Power BI**
-
----
-
-## 🧾 Files in This Repository
-
-| File | Description |
-|------|--------------|
-| `Unsupervised_Clustering_Wine.ipynb` | Google Colab notebook with complete code and visualizations |
-| `Unsupervised_Wine_Report.pdf` | Two-page summary report (methods, results, and deployment plan) |
-| `README.md` | Project overview and run instructions |
-
----
-
-## 🧩 Tech Stack
-
-- **Language:** Python  
-- **Libraries:** NumPy, Pandas, Matplotlib, scikit-learn, SciPy  
-- **Environment:** Google Colab  
-
----
-
-## 📜 License
-
-For educational use only.
-
----
-
-**Author:** Adetola Odulaja_  
-📅 _November 2025_
-
+[Explore my portfolio](https://github.com/Ridwat/Ethical-AI-Analysis/blob/main/PORTFOLIO.md)
